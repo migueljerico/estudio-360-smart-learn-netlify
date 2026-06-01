@@ -28,7 +28,7 @@ function Assigned() {
         <p className="text-muted-foreground">Estudia y autoevalúate a tu ritmo.</p>
       </div>
 
-      <Section title="Flashcards" icon={BookOpen}>
+      <Section title="Tarjetas" icon={BookOpen}>
         {(data?.decks ?? []).map((d) => (
           <Link key={d.id} to="/app/study/deck/$id" params={{ id: d.id }}>
             <Card className="transition hover:shadow-[var(--shadow-soft)]">
@@ -42,7 +42,7 @@ function Assigned() {
         {data?.decks.length === 0 && <Empty />}
       </Section>
 
-      <Section title="Quizzes" icon={GraduationCap}>
+      <Section title="Cuestionarios" icon={GraduationCap}>
         {(data?.quizzes ?? []).map((q) => (
           <Link key={q.id} to="/app/study/quiz/$id" params={{ id: q.id }}>
             <Card className="transition hover:shadow-[var(--shadow-soft)]">

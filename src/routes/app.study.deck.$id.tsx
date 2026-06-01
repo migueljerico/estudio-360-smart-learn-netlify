@@ -94,5 +94,5 @@ function StudyDeck() {
 }
 
 function Empty() {
-  return <p className="text-center text-muted-foreground">Este deck no tiene tarjetas todavía.</p>;
+  return <p className="text-center text-muted-foreground">Esta tarjeta aún no tiene fichas.</p>;
 }

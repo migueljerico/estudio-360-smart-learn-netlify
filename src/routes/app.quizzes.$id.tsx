@@ -13,7 +13,7 @@ import { toast } from "sonner";
 import { AssignDialog } from "@/components/AssignDialog";
 
 export const Route = createFileRoute("/app/quizzes/$id")({
-  head: () => ({ meta: [{ title: "Quiz · Estudio360" }] }),
+  head: () => ({ meta: [{ title: "Cuestionario · Estudio360" }] }),
   component: QuizEditor,
 });
 
@@ -88,7 +88,7 @@ function QuizEditor() {
       if (error) return toast.error(error.message);
       await supabase.from("answers").insert(validAnswers.map((a, j) => ({ question_id: insertedQ.id, text: a.text, is_correct: a.is_correct, position: j })));
     }
-    toast.success("Quiz guardado");
+    toast.success("Cuestionario guardado");
     if (isNew) navigate({ to: "/app/quizzes/$id", params: { id: currentId! } });
   };
 
@@ -104,7 +104,7 @@ function QuizEditor() {
       <Button variant="ghost" size="sm" asChild><Link to="/app/library"><ArrowLeft className="h-4 w-4" /> Volver</Link></Button>
 
       <Card>
-        <CardHeader><CardTitle className="font-display">{isNew ? "Nuevo quiz" : "Editar quiz"}</CardTitle></CardHeader>
+        <CardHeader><CardTitle className="font-display">{isNew ? "Nuevo cuestionario" : "Editar cuestionario"}</CardTitle></CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2"><Label>Título</Label><Input value={title} onChange={(e) => setTitle(e.target.value)} /></div>
           <div className="grid gap-4 sm:grid-cols-2">

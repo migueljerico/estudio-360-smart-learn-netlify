@@ -38,7 +38,7 @@ function Landing() {
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
             Estudio360 conecta profesores y alumnos en una plataforma simple para crear flashcards,
-            quizzes y seguir el progreso real del aprendizaje.
+            cuestionarios y seguir el progreso real del aprendizaje.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Button size="lg" asChild>
@@ -53,7 +53,7 @@ function Landing() {
         <section className="mt-24 grid gap-5 md:grid-cols-3">
           {[
             { icon: BookOpen, title: "Flashcards inteligentes", text: "Crea, asigna y repasa tarjetas. Repite las que fallas." },
-            { icon: GraduationCap, title: "Quizzes con feedback", text: "Autoevaluación inmediata, resultados al instante." },
+            { icon: GraduationCap, title: "Cuestionarios con feedback", text: "Autoevaluación inmediata, resultados al instante." },
             { icon: TrendingUp, title: "Progreso visible", text: "Métricas claras de aciertos, errores y tiempo de estudio." },
           ].map((f) => (
             <div key={f.title} className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-soft)]">
@@ -71,7 +71,7 @@ function Landing() {
             <Users className="h-6 w-6 text-primary" />
             <h2 className="mt-3 font-display text-2xl font-semibold">Para profesores</h2>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-              <li>· Crea decks y quizzes con un editor claro</li>
+              <li>· Crea tarjetas y cuestionarios con un editor claro</li>
               <li>· Organiza por curso, tema y unidad</li>
               <li>· Asigna a clases o a alumnos concretos</li>
               <li>· Ve el progreso individual y de toda la clase</li>

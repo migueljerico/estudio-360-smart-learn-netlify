@@ -84,7 +84,7 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <Link to="/app/decks/new">
                       <BookOpen />
-                      <span>Nuevo deck</span>
+                      <span>Nueva tarjeta</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -92,7 +92,7 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <Link to="/app/quizzes/new">
                       <GraduationCap />
-                      <span>Nuevo quiz</span>
+                      <span>Nuevo cuestionario</span>
                     </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>

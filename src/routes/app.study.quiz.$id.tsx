@@ -9,7 +9,7 @@ import { useAuth } from "@/lib/auth-context";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/app/study/quiz/$id")({
-  head: () => ({ meta: [{ title: "Quiz · Estudio360" }] }),
+  head: () => ({ meta: [{ title: "Cuestionario · Estudio360" }] }),
   component: StudyQuiz,
 });
 
@@ -42,7 +42,7 @@ function StudyQuiz() {
   }, [data, attemptId, user, id]);
 
   if (!data) return <p className="text-center text-muted-foreground">Cargando…</p>;
-  if (!data.questions.length) return <p className="text-center text-muted-foreground">Quiz vacío.</p>;
+  if (!data.questions.length) return <p className="text-center text-muted-foreground">Cuestionario vacío.</p>;
 
   const q = data.questions[idx] as unknown as { id: string; prompt: string; answers: { id: string; text: string; is_correct: boolean; position: number }[] };
   const total = data.questions.length;
