@@ -29,7 +29,7 @@ function History() {
               <Card className="transition hover:shadow-[var(--shadow-soft)]">
                 <CardContent className="flex items-center justify-between p-4">
                   <div>
-                    <p className="font-medium">{quiz?.title ?? "Quiz"}</p>
+                    <p className="font-medium">{quiz?.title ?? "Cuestionario"}</p>
                     <p className="text-xs text-muted-foreground">{a.finished_at ? new Date(a.finished_at).toLocaleString() : "En curso"}</p>
                   </div>
                   <span className="font-display text-lg">{pct}% <span className="text-sm text-muted-foreground">({a.score}/{a.total})</span></span>
@@ -38,7 +38,7 @@ function History() {
             </Link>
           );
         })}
-        {data?.length === 0 && <p className="rounded-lg border border-dashed border-border p-6 text-center text-sm text-muted-foreground">Aún no has hecho ningún quiz.</p>}
+        {data?.length === 0 && <p className="rounded-lg border border-dashed border-border p-6 text-center text-sm text-muted-foreground">Aún no has hecho ningún cuestionario.</p>}
       </div>
     </div>
   );

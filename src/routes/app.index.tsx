@@ -59,14 +59,14 @@ function TeacherDashboard() {
           <p className="text-muted-foreground">Gestiona tu contenido y el progreso de tu clase.</p>
         </div>
         <div className="flex gap-2">
-          <Button asChild><Link to="/app/decks/new"><Plus className="h-4 w-4" /> Nuevo deck</Link></Button>
-          <Button variant="secondary" asChild><Link to="/app/quizzes/new"><Plus className="h-4 w-4" /> Nuevo quiz</Link></Button>
+          <Button asChild><Link to="/app/decks/new"><Plus className="h-4 w-4" /> Nueva tarjeta</Link></Button>
+          <Button variant="secondary" asChild><Link to="/app/quizzes/new"><Plus className="h-4 w-4" /> Nuevo cuestionario</Link></Button>
         </div>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <StatCard icon={BookOpen} label="Decks" value={decks.data?.length ?? 0} />
-        <StatCard icon={GraduationCap} label="Quizzes" value={quizzes.data?.length ?? 0} />
+        <StatCard icon={BookOpen} label="Tarjetas" value={decks.data?.length ?? 0} />
+        <StatCard icon={GraduationCap} label="Cuestionarios" value={quizzes.data?.length ?? 0} />
         <StatCard icon={Users} label="Clases" value={classes.data?.length ?? 0} />
         <StatCard icon={TrendingUp} label="Intentos recientes" value={attempts.data?.length ?? 0} />
       </div>
@@ -92,7 +92,7 @@ function TeacherDashboard() {
               </Link>
             ))}
             {(decks.data?.length ?? 0) + (quizzes.data?.length ?? 0) === 0 && (
-              <EmptyState text="Aún no tienes contenido. Crea tu primer deck o quiz." />
+              <EmptyState text="Aún no tienes contenido. Crea tu primera tarjeta o cuestionario." />
             )}
           </CardContent>
         </Card>
@@ -102,7 +102,7 @@ function TeacherDashboard() {
           <CardContent className="space-y-2">
             {(attempts.data ?? []).map((a) => (
               <div key={a.id} className="flex items-center justify-between rounded-lg border border-border p-3 text-sm">
-                <span className="text-muted-foreground">Quiz · {a.finished_at ? new Date(a.finished_at).toLocaleDateString() : "en curso"}</span>
+                <span className="text-muted-foreground">Cuestionario · {a.finished_at ? new Date(a.finished_at).toLocaleDateString() : "en curso"}</span>
                 <span className="font-medium">{a.score}/{a.total}</span>
               </div>
             ))}
@@ -145,8 +145,8 @@ function StudentDashboard({ userId }: { userId: string }) {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-3">
-        <StatCard icon={BookOpen} label="Decks asignados" value={assigned.data?.decks.length ?? 0} />
-        <StatCard icon={GraduationCap} label="Quizzes asignados" value={assigned.data?.quizzes.length ?? 0} />
+        <StatCard icon={BookOpen} label="Tarjetas asignadas" value={assigned.data?.decks.length ?? 0} />
+        <StatCard icon={GraduationCap} label="Cuestionarios asignados" value={assigned.data?.quizzes.length ?? 0} />
         <StatCard icon={TrendingUp} label="Aciertos globales" value={`${pct}%`} />
       </div>
 

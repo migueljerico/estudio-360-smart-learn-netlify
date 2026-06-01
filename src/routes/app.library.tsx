@@ -39,18 +39,18 @@ function LibraryPage() {
       }
       return newDeck.id;
     },
-    onSuccess: () => { toast.success("Deck duplicado"); qc.invalidateQueries({ queryKey: ["library-decks"] }); },
+    onSuccess: () => { toast.success("Tarjeta duplicada"); qc.invalidateQueries({ queryKey: ["library-decks"] }); },
     onError: (e: Error) => toast.error(e.message),
   });
 
   const delDeck = useMutation({
     mutationFn: async (id: string) => { const { error } = await supabase.from("decks").delete().eq("id", id); if (error) throw error; },
-    onSuccess: () => { toast.success("Deck eliminado"); qc.invalidateQueries({ queryKey: ["library-decks"] }); },
+    onSuccess: () => { toast.success("Tarjeta eliminada"); qc.invalidateQueries({ queryKey: ["library-decks"] }); },
   });
 
   const delQuiz = useMutation({
     mutationFn: async (id: string) => { const { error } = await supabase.from("quizzes").delete().eq("id", id); if (error) throw error; },
-    onSuccess: () => { toast.success("Quiz eliminado"); qc.invalidateQueries({ queryKey: ["library-quizzes"] }); },
+    onSuccess: () => { toast.success("Cuestionario eliminado"); qc.invalidateQueries({ queryKey: ["library-quizzes"] }); },
   });
 
   return (
@@ -61,15 +61,15 @@ function LibraryPage() {
           <p className="text-muted-foreground">Todo tu contenido en un solo lugar.</p>
         </div>
         <div className="flex gap-2">
-          <Button onClick={() => navigate({ to: "/app/decks/new" })}><Plus className="h-4 w-4" /> Deck</Button>
-          <Button variant="secondary" onClick={() => navigate({ to: "/app/quizzes/new" })}><Plus className="h-4 w-4" /> Quiz</Button>
+          <Button onClick={() => navigate({ to: "/app/decks/new" })}><Plus className="h-4 w-4" /> Tarjeta</Button>
+          <Button variant="secondary" onClick={() => navigate({ to: "/app/quizzes/new" })}><Plus className="h-4 w-4" /> Cuestionario</Button>
         </div>
       </div>
 
       <Tabs defaultValue="decks">
         <TabsList>
-          <TabsTrigger value="decks"><BookOpen className="mr-2 h-4 w-4" />Decks</TabsTrigger>
-          <TabsTrigger value="quizzes"><GraduationCap className="mr-2 h-4 w-4" />Quizzes</TabsTrigger>
+          <TabsTrigger value="decks"><BookOpen className="mr-2 h-4 w-4" />Tarjetas</TabsTrigger>
+          <TabsTrigger value="quizzes"><GraduationCap className="mr-2 h-4 w-4" />Cuestionarios</TabsTrigger>
         </TabsList>
 
         <TabsContent value="decks" className="mt-4">
@@ -80,17 +80,17 @@ function LibraryPage() {
                   <Link to="/app/decks/$id" params={{ id: d.id }} className="block">
                     <h3 className="font-display text-lg font-semibold group-hover:text-primary">{d.title}</h3>
                     <p className="mt-1 text-xs text-muted-foreground">
-                      {[d.subject, d.topic].filter(Boolean).join(" · ") || "Sin tema"} · {(d as { flashcards?: { count: number }[] }).flashcards?.[0]?.count ?? 0} tarjetas
+                      {[d.subject, d.topic].filter(Boolean).join(" · ") || "Sin tema"} · {(d as { flashcards?: { count: number }[] }).flashcards?.[0]?.count ?? 0} fichas
                     </p>
                   </Link>
                   <div className="mt-4 flex gap-2">
                     <Button size="sm" variant="outline" onClick={() => dupDeck.mutate(d.id)}><Copy className="h-3.5 w-3.5" /></Button>
-                    <Button size="sm" variant="ghost" onClick={() => { if (confirm("¿Eliminar deck?")) delDeck.mutate(d.id); }}><Trash2 className="h-3.5 w-3.5" /></Button>
+                    <Button size="sm" variant="ghost" onClick={() => { if (confirm("¿Eliminar tarjeta?")) delDeck.mutate(d.id); }}><Trash2 className="h-3.5 w-3.5" /></Button>
                   </div>
                 </CardContent>
               </Card>
             ))}
-            {decks.data?.length === 0 && <Empty text="Aún no tienes decks." />}
+            {decks.data?.length === 0 && <Empty text="Aún no tienes tarjetas." />}
           </div>
         </TabsContent>
 
@@ -106,12 +106,12 @@ function LibraryPage() {
                     </p>
                   </Link>
                   <div className="mt-4 flex gap-2">
-                    <Button size="sm" variant="ghost" onClick={() => { if (confirm("¿Eliminar quiz?")) delQuiz.mutate(q.id); }}><Trash2 className="h-3.5 w-3.5" /></Button>
+                    <Button size="sm" variant="ghost" onClick={() => { if (confirm("¿Eliminar cuestionario?")) delQuiz.mutate(q.id); }}><Trash2 className="h-3.5 w-3.5" /></Button>
                   </div>
                 </CardContent>
               </Card>
             ))}
-            {quizzes.data?.length === 0 && <Empty text="Aún no tienes quizzes." />}
+            {quizzes.data?.length === 0 && <Empty text="Aún no tienes cuestionarios." />}
           </div>
         </TabsContent>
       </Tabs>

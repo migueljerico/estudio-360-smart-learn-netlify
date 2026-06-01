@@ -12,7 +12,7 @@ import { toast } from "sonner";
 import { AssignDialog } from "@/components/AssignDialog";
 
 export const Route = createFileRoute("/app/decks/$id")({
-  head: () => ({ meta: [{ title: "Deck · Estudio360" }] }),
+  head: () => ({ meta: [{ title: "Tarjeta · Estudio360" }] }),
   component: DeckEditor,
 });
 
@@ -73,7 +73,7 @@ function DeckEditor() {
     if (valid.length) {
       await supabase.from("flashcards").insert(valid.map((c, i) => ({ deck_id: currentId, front: c.front, back: c.back, position: i })));
     }
-    toast.success("Deck guardado");
+    toast.success("Tarjeta guardada");
     if (isNew) navigate({ to: "/app/decks/$id", params: { id: currentId! } });
   };
 
@@ -82,7 +82,7 @@ function DeckEditor() {
       <Button variant="ghost" size="sm" asChild><Link to="/app/library"><ArrowLeft className="h-4 w-4" /> Volver</Link></Button>
 
       <Card>
-        <CardHeader><CardTitle className="font-display">{isNew ? "Nuevo deck" : "Editar deck"}</CardTitle></CardHeader>
+        <CardHeader><CardTitle className="font-display">{isNew ? "Nueva tarjeta" : "Editar tarjeta"}</CardTitle></CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2"><Label>Título</Label><Input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Verbos irregulares en inglés" /></div>
           <div className="grid gap-4 sm:grid-cols-2">
