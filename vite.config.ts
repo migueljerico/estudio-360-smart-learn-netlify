@@ -14,5 +14,14 @@ export default defineConfig({
   },
   nitro: {
     preset: "netlify",
+    // The netlify preset must emit the SSR function into `.netlify/functions-internal`
+    // so Netlify's build system auto-detects and deploys it. The Lovable Vite config
+    // otherwise defaults this to `dist/server`, a path Netlify never looks at, which
+    // left the site with no deployed function and only static (index.html-less) assets.
+    output: {
+      dir: ".netlify/functions-internal",
+      serverDir: ".netlify/functions-internal/server",
+      publicDir: "dist/client",
+    },
   },
 });
