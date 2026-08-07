@@ -12,6 +12,11 @@
 
 ---
 
+## 📸 Vista Previa del Despliegue en Netlify
+
+![Vista Previa del Despliegue en Netlify](screenshots/Captura_Estudio360_Netlify.png)
+
+---
 ## 🔗 Acceso a la Aplicación
 
 [![Ver App en Producción](https://img.shields.io/badge/🚀%20Ver%20App%20en%20Producción-estudio--360.netlify.app-00C7B7?style=for-the-badge&logo=netlify&logoColor=white)](https://estudio360.netlify.app/)
